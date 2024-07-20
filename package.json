@@ -11,8 +11,5 @@
     "start": "npm start --workspaces --if-present",
     "test": "npm test --workspaces --if-present"
   },
-  "type": "module",
-  "workspaces": [
-    "src/hello_world_frontend"
-  ]
+  "type": "module"
 }
