@@ -4,6 +4,7 @@ use candid::Principal;
 pub mod access;
 pub mod state;
 pub mod storable;
+pub mod logic;
 
 use storable::*;
 
