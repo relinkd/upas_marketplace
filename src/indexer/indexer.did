@@ -1,3 +1,7 @@
+type Issuer = record { verified : bool; issuer_type : text };
+type Result = variant { Ok : Issuer; Err : text };
 service : {
-    "greet": (text) -> (text) query;
+  caller : () -> (principal) query;
+  getIssuer : (principal) -> (Result) query;
+  isController : () -> (bool) query;
 }
