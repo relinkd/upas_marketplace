@@ -5,4 +5,6 @@ pub mod access;
 pub mod state;
 pub mod storable;
 
+use storable::*;
+
 export_candid!();
