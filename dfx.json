@@ -1,0 +1,27 @@
+{
+  "canisters": {
+    "hello_world_backend": {
+      "candid": "src/hello_world_backend/hello_world_backend.did",
+      "package": "hello_world_backend",
+      "type": "rust"
+    },
+    "hello_world_frontend": {
+      "dependencies": [
+        "hello_world_backend"
+      ],
+      "source": [
+        "src/hello_world_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "hello_world_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
