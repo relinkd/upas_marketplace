@@ -1,4 +1,10 @@
-type Issuer = record { verified : bool; issuer_type : text };
+type Issuer = record {
+  reputation_module : principal;
+  verified : bool;
+  issuer_type : text;
+  name : text;
+  description : text;
+};
 type Result = variant { Ok : Issuer; Err : text };
 type Result_1 = variant { Ok; Err : text };
 service : {
@@ -9,5 +15,7 @@ service : {
       vec record { principal; Issuer },
     ) query;
   isController : () -> (bool) query;
-  verifyIssuer : (principal, text) -> (Result_1);
+  verifyIssuer : (principal, text, record { principal; text; text }) -> (
+      Result_1,
+    );
 }

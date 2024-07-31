@@ -16,7 +16,10 @@ pub struct StorablePrincipal(pub Principal);
 #[derive(CandidType, Deserialize, Clone)]
 pub struct Issuer {
     pub issuer_type: String,
-    pub verified: bool
+    pub verified: bool,
+    pub reputation_module: Principal,
+    pub name: String,
+    pub description: String
 }
 
 macro_rules! impl_storable {

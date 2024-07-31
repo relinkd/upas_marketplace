@@ -16,7 +16,10 @@ pub fn add_unverified_issuer(principal: Principal) -> Result<Issuer, String> {
         Err(_) => {
             let issuer = Issuer {
                 issuer_type: String::from("null"),
-                verified: false
+                verified: false,
+                reputation_module: Principal::anonymous(),
+                name: String::from(""),
+                description: String::from("")
             };
 
             _set_issuer(principal, issuer.clone())?;
@@ -28,7 +31,7 @@ pub fn add_unverified_issuer(principal: Principal) -> Result<Issuer, String> {
 }
 
 #[update(name = "verifyIssuer")]
-pub fn verify_issuer(principal: Principal, issuer_type: String) -> Result<(), String> {
+pub fn verify_issuer(principal: Principal, issuer_type: String, metadata: (Principal, String, String)) -> Result<(), String> {
     let issuer = get_issuer(principal);
 
     match issuer {
@@ -39,7 +42,10 @@ pub fn verify_issuer(principal: Principal, issuer_type: String) -> Result<(), St
 
             _set_issuer(principal, Issuer {
                 issuer_type: issuer_type,
-                verified: true
+                verified: true,
+                reputation_module: metadata.0,
+                name: metadata.1,
+                description: metadata.2
             })?;
 
             return Ok(())
