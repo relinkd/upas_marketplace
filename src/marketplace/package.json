@@ -1,7 +1,8 @@
 {
-  "name": "initial-template",
+  "name": "marketplace",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@connect2ic/core": "^0.2.0-beta.24",
     "@connect2ic/react": "^0.2.0-beta.24",
@@ -100,6 +101,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "prebuild": "dfx generate",
     "test": "craco test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"{src,types,scripts}/**/*.{json,{j,t}s{,x},scss,}\"",

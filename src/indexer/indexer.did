@@ -1,7 +1,13 @@
 type Issuer = record { verified : bool; issuer_type : text };
 type Result = variant { Ok : Issuer; Err : text };
+type Result_1 = variant { Ok; Err : text };
 service : {
+  addUnverifiedIssuer : (principal) -> (Result);
   caller : () -> (principal) query;
   getIssuer : (principal) -> (Result) query;
+  getIssuersBatch : (opt principal, nat64) -> (
+      vec record { principal; Issuer },
+    ) query;
   isController : () -> (bool) query;
+  verifyIssuer : (principal, text) -> (Result_1);
 }

@@ -10,7 +10,7 @@
         "indexer"
       ],
       "source": [
-        "src/marketplace/dist"
+        "src/marketplace/build"
       ],
       "type": "assets",
       "workspace": "marketplace"
