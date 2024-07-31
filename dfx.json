@@ -4,6 +4,16 @@
       "candid": "src/indexer/indexer.did",
       "package": "indexer",
       "type": "rust"
+    },
+    "marketplace": {
+      "dependencies": [
+        "indexer"
+      ],
+      "source": [
+        "src/marketplace/dist"
+      ],
+      "type": "assets",
+      "workspace": "marketplace"
     }
   },
   "defaults": {
