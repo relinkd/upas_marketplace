@@ -2,9 +2,10 @@ import svgr from 'vite-plugin-svgr';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path';
-import envCompatible from 'vite-plugin-env-compatible';
+import env from 'vite-plugin-env-compatible';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import environment from 'vite-plugin-environment';
 
 export default defineConfig({
   plugins: [
@@ -15,7 +16,9 @@ export default defineConfig({
       }
       
     }),
-    envCompatible()
+    env(),
+    environment('all', { prefix: 'CANISTER_' }),
+    environment('all', { prefix: 'DFX_' }),
   ],
   server: {
     port: 3000

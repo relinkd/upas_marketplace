@@ -6,6 +6,7 @@
   "dependencies": {
     "@connect2ic/core": "^0.2.0-beta.24",
     "@connect2ic/react": "^0.2.0-beta.24",
+    "@dfinity/agent": "^2.0.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
@@ -43,6 +44,7 @@
     "sass": "^1.52.1",
     "use-debounce": "^9.0.4",
     "vite-plugin-env-compatible": "^2.0.1",
+    "vite-plugin-environment": "^1.1.3",
     "vite-plugin-svg": "^0.7.0",
     "web3": "^1.8.0",
     "web3-eth-contract": "^1.8.0",
