@@ -4,7 +4,7 @@ import { idlFactory, canisterId } from '../../../../declarations/indexer';
 
 export const WithICConnect: FC<PropsWithChildren> = ({ children }) => {
   return (
-  <AgentProvider withProcessEnv host='http://127.0.0.1:4943'>
+  <AgentProvider withProcessEnv>
     <ActorProvider idlFactory={idlFactory} canisterId={canisterId}>
       {children}
     </ActorProvider>

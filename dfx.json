@@ -3,7 +3,10 @@
     "indexer": {
       "candid": "src/indexer/indexer.did",
       "package": "indexer",
-      "type": "rust"
+      "type": "rust",
+      "declarations": {
+        "node_compatibility": true
+      }
     },
     "marketplace": {
       "dependencies": [
@@ -18,10 +21,9 @@
   },
   "defaults": {
     "build": {
-      "args": "",
-      "packtool": ""
+      "packtool": "npm run --silent sources"
     }
   },
   "output_env_file": ".env",
-  "version": 1
+  "version": 2
 }
