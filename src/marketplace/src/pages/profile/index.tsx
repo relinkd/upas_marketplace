@@ -8,6 +8,8 @@ export const ProfilePage = () => {
     functionName: "isController",
   })
 
+  console.log(process.env, 'proccess env')
+
   console.log(count)
 
   return (

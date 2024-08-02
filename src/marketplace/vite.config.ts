@@ -2,7 +2,7 @@
 import svgr from 'vite-plugin-svgr';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import environment from 'vite-plugin-environment';
+import EnvironmentPlugin from 'vite-plugin-environment';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -27,8 +27,8 @@ export default defineConfig({
       }
       
     }),
-    environment('all', { prefix: 'CANISTER_' }),
-    environment('all', { prefix: 'DFX_' }),
+    EnvironmentPlugin('all', { prefix: 'CANISTER_' }),
+    EnvironmentPlugin('all', { prefix: 'DFX_' }),
   ],
   resolve: {
     alias: {
