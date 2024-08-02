@@ -1,13 +1,19 @@
+/// <reference types="vitest" />
 import svgr from 'vite-plugin-svgr';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path';
-import env from 'vite-plugin-env-compatible';
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 import environment from 'vite-plugin-environment';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default defineConfig({
+  server: {
+    port: 3000
+  },
+  build: {
+    outDir: 'build',
+  },
   plugins: [
     react(),
     svgr({
@@ -16,21 +22,9 @@ export default defineConfig({
       }
       
     }),
-    env(),
     environment('all', { prefix: 'CANISTER_' }),
     environment('all', { prefix: 'DFX_' }),
   ],
-  server: {
-    port: 3000
-  },
-  // root: 'public',
-  build: {
-    outDir: 'build',
-  },
-  define: {
-    global: {},
-    process: {}
-  },
   resolve: {
     alias: {
         app: '/src/app',
@@ -44,14 +38,9 @@ export default defineConfig({
   },
   optimizeDeps: {
     esbuildOptions: {
-      // Node.js global to browser global polyfills
       define: {
-        global: 'globalThis'
+        global: 'globalThis',
       },
-      plugins: [
-        NodeGlobalsPolyfillPlugin(),
-        NodeModulesPolyfillPlugin()
-      ]
-    }
-  }
+    },
+  },
 })

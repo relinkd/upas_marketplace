@@ -5,9 +5,10 @@ import { useQueryCall } from '@ic-reactor/react';
 export const ProfilePage = () => {
 
   const { data: count, call: refetchCount } = useQueryCall({
-    functionName: "getIssuersBatch",
-    args: [{ batch: 10}],
+    functionName: "isController",
   })
+
+  console.log(count)
 
   return (
     <Layout>
