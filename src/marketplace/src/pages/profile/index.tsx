@@ -5,10 +5,12 @@ import { useQueryCall } from '@ic-reactor/react';
 export const ProfilePage = () => {
 
   const { data: count, call: refetchCount } = useQueryCall({
-    functionName: "isController",
+    functionName: "getIssuersBatch",
+    args: [
+      [],
+      BigInt(10)
+    ]
   })
-
-  console.log(process.env, 'proccess env')
 
   console.log(count)
 
