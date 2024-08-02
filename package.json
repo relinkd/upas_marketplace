@@ -12,6 +12,7 @@
     "test": "npm test --workspaces --if-present"
   },
   "type": "module",
+  "private": true,
   "workspaces": [
     "src/marketplace"
   ]

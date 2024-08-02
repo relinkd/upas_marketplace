@@ -5,7 +5,7 @@ use ic_stable_structures::{
 };
 use std::borrow::Cow;
 
-pub const MAX_VALUE_SIZE: u32 = 100;
+pub const MAX_VALUE_SIZE: u32 = 500;
 pub const MAX_KEY_SIZE: u32 = 100;
 
 pub type Memory = VirtualMemory<DefaultMemoryImpl>;
@@ -15,9 +15,9 @@ pub struct StorablePrincipal(pub Principal);
 
 #[derive(CandidType, Deserialize, Clone)]
 pub struct Issuer {
+    pub reputation_module: String,
     pub issuer_type: String,
     pub verified: bool,
-    pub reputation_module: Principal,
     pub name: String,
     pub description: String
 }
