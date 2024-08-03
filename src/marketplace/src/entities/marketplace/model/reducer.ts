@@ -1,18 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-type Issuer = {
-  verified: boolean;
-  description: String;
-  issuer_type: String;
-  name: String;
-  reputation_module: String;
-} 
-type Principal = {
-  _arr: Uint8Array[];
-  _isPrincipal: boolean; 
-}
-
-type IssuerTuple = [Principal, Issuer];
+import { IssuerTuple } from 'shared';
 
 export type MarketplaceState = {
   issuers: IssuerTuple[]
