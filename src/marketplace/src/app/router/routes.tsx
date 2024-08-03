@@ -1,10 +1,10 @@
-import { ProfilePage } from 'pages/profile';
+import { MarketplacePage } from 'pages/marketplace';
 
 import { RoutesProps } from './types';
 
 export const appRoutes: RoutesProps = {
   home: {
-    path: '/profile',
-    component: <ProfilePage />,
+    path: '/',
+    component: <MarketplacePage />,
   },
 };

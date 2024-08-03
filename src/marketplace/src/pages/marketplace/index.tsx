@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { marketplaceModel } from 'entities/marketplace';
 import { IssuerTuple } from 'shared';
 
-export const ProfilePage = () => {
+export const MarketplacePage = () => {
 
   const dispatch = useDispatch();
 
@@ -20,7 +20,7 @@ export const ProfilePage = () => {
 
   useEffect(() => {
     if(!issuers) return;
-    
+
     dispatch(
       marketplaceModel.marketplaceActions.updateMarketplaceState({
         issuers: issuers as IssuerTuple[]
