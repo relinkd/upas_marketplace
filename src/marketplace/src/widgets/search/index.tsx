@@ -15,7 +15,8 @@ export const Search = () => {
         setInput(e.target.value);
       }}
       sx={{
-        width: '50%'
+        width: '100%',
+        marginTop: 15
       }}
     />
   );

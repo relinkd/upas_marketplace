@@ -1,5 +1,5 @@
 import { ComponentsOverrides, ComponentsProps, Theme } from '@mui/material';
-import { BORDER_RADIUS_S, COLOR_BORDER_PURPLE } from 'shared/config';
+import { BORDER_RADIUS_M, COLOR_BORDER_PURPLE } from 'shared/config';
 
 export const getMuiTextFieldOverrides = (theme: Theme): ComponentsOverrides['MuiTextField'] => ({
   root: {
@@ -10,7 +10,7 @@ export const getMuiTextFieldOverrides = (theme: Theme): ComponentsOverrides['Mui
       background: `${theme.themeColors.colorWh} !important`,
       border: `1px solid`,
       borderColor: COLOR_BORDER_PURPLE,
-      borderRadius: BORDER_RADIUS_S,
+      borderRadius: BORDER_RADIUS_M,
       '&::after, &::before': {
         display: 'none',
       },

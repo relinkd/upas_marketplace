@@ -4,7 +4,7 @@ export const BORDER_RADIUS_XXL = '24px';
 export const BORDER_RADIUS_XL = '20px';
 export const BORDER_RADIUS_L = '16px';
 export const BORDER_RADIUS_M = '12px';
-export const BORDER_RADIUS_S = '7px';
+export const BORDER_RADIUS_S = '10px';
 
 // ===== Borders
 export const BORDER = '1px solid';
