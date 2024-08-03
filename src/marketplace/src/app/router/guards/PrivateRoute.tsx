@@ -1,5 +1,4 @@
 import { Navigate } from 'react-router-dom';
-import { userModel } from 'entities/user';
 import { routes, useShallowSelector } from 'shared';
 
 type ProtectedRouteProps = {

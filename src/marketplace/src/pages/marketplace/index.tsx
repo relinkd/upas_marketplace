@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { marketplaceModel } from 'entities/marketplace';
 import { IssuerTuple } from 'shared';
+import { Issuers } from 'widgets/issuers';
 
 export const MarketplacePage = () => {
 
@@ -30,8 +31,9 @@ export const MarketplacePage = () => {
 
   return (
     <Layout>
-      <Stack flexDirection="row" justifyContent="center" width={1} maxWidth={1}>
+      <Stack flexDirection="column" alignItems="center" width={1} maxWidth={1}>
         <Search />
+        <Issuers />
       </Stack>
     </Layout>
   );
