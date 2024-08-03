@@ -1,11 +1,11 @@
 import { FC, PropsWithChildren, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Box, Container, styled } from '@mui/material';
-import { userModel } from 'entities/user';
 import { useShallowSelector } from 'shared';
 
 import { BgSmall } from './assets';
 import { Header } from './header';
+import { Footer } from './footer';
 
 const StyledLayout = styled(Box)((props) => ({
   display: 'flex',
@@ -47,14 +47,6 @@ type LayoutProps = {
 };
 
 export const Layout: FC<PropsWithChildren<LayoutProps>> = ({ children, bg = null }) => {
-  const dispatch = useDispatch();
-  const { isAuthenticated } = useShallowSelector(userModel.selectors.selectIsAuthenticated);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(userModel.userActions.getUserInfo());
-    }
-  }, [dispatch, isAuthenticated]);
 
   return (
     <StyledLayout className={bg || ''}>
@@ -69,6 +61,7 @@ export const Layout: FC<PropsWithChildren<LayoutProps>> = ({ children, bg = null
       >
         {children}
       </Container>
+      <Footer />
     </StyledLayout>
   );
 };

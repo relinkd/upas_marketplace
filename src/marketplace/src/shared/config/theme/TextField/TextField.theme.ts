@@ -6,7 +6,7 @@ export const getMuiTextFieldOverrides = (theme: Theme): ComponentsOverrides['Mui
     width: '100%',
     '.MuiInputBase-root': {
       padding: theme.spacing(2),
-      height: 48,
+      height: 70,
       background: `${theme.themeColors.textFieldBackground} !important`,
       border: `1px solid`,
       borderColor: theme.themeColors.textFieldBorder,
@@ -52,7 +52,7 @@ export const getMuiTextFieldOverrides = (theme: Theme): ComponentsOverrides['Mui
 
     '.MuiFormLabel-root': {
       ...theme.typography.body2,
-      lineHeight: '20px',
+      lineHeight: '32px',
       color: theme.themeColors.textFieldFormLabel,
       textTransform: 'capitalize',
       '&.MuiInputLabel-shrink': {

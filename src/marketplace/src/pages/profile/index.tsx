@@ -1,5 +1,5 @@
 import { Typography, Stack } from '@mui/material';
-import { Layout } from 'widgets';
+import { Layout, Search } from 'widgets';
 import { useQueryCall } from '@ic-reactor/react';
 
 export const ProfilePage = () => {
@@ -17,7 +17,7 @@ export const ProfilePage = () => {
   return (
     <Layout>
       <Stack flexDirection="row" justifyContent="center" width={1} maxWidth={1}>
-        
+        <Search />
       </Stack>
     </Layout>
   );

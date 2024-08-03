@@ -29,6 +29,7 @@ export default defineConfig({
     }),
     EnvironmentPlugin('all', { prefix: 'CANISTER_' }),
     EnvironmentPlugin('all', { prefix: 'DFX_' }),
+    EnvironmentPlugin(['CANISTER_ID_INDEXER', 'DFX_NETWORK'])
   ],
   resolve: {
     alias: {
