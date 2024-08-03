@@ -8,7 +8,7 @@ export const Issuers = () => {
     const { issuers } = useShallowSelector(marketplaceModel.selectors.getMarketplace);
 
   return (
-    <Box sx={{
+    <Box paddingTop={15} sx={{
       width: '50%',
       display: 'flex'
     }}>

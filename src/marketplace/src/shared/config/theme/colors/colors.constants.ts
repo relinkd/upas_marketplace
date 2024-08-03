@@ -14,3 +14,8 @@ export const COLOR_WH_10 = 'rgba(255, 255, 255, 0.1)';
 export const COLOR_PURPLE_GRADIENT = 'linear-gradient(128.74deg, #8A2BDD 5.87%, #57DCFE 102.86%)';
 export const COLOR_PURPLE = '#C8C3F2';
 export const COLOR_BACKGROUND_PURPLE = '#F3F2FB';
+
+export const COLOR_LIGHT_BLUE = '#5BD8FE';
+export const COLOR_LIGHTER_GRAY = '#F3F2FB';
+export const COLOR_BORDER_GRAY = '#E3E4ED';
+export const COLOR_BORDER_PURPLE = '#C8C3F2';
