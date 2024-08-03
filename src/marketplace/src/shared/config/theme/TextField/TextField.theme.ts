@@ -1,5 +1,5 @@
 import { ComponentsOverrides, ComponentsProps, Theme } from '@mui/material';
-import { BORDER_RADIUS_S } from 'shared/config';
+import { BORDER_RADIUS_S, COLOR_BORDER_PURPLE } from 'shared/config';
 
 export const getMuiTextFieldOverrides = (theme: Theme): ComponentsOverrides['MuiTextField'] => ({
   root: {
@@ -7,15 +7,16 @@ export const getMuiTextFieldOverrides = (theme: Theme): ComponentsOverrides['Mui
     '.MuiInputBase-root': {
       padding: theme.spacing(2),
       height: 70,
-      background: `${theme.themeColors.textFieldBackground} !important`,
+      background: `${theme.themeColors.colorWh} !important`,
       border: `1px solid`,
-      borderColor: theme.themeColors.textFieldBorder,
+      borderColor: COLOR_BORDER_PURPLE,
       borderRadius: BORDER_RADIUS_S,
       '&::after, &::before': {
         display: 'none',
       },
       '&:hover, &:active': {
         borderColor: theme.themeColors.textFieldBorderHover,
+        boxShadow: '0px 0px 58.1px -15px #635D952E'
       },
       '&.Mui-focused': {
         borderColor: theme.themeColors.textFieldBorderFocused,
@@ -54,6 +55,7 @@ export const getMuiTextFieldOverrides = (theme: Theme): ComponentsOverrides['Mui
       ...theme.typography.body2,
       lineHeight: '32px',
       color: theme.themeColors.textFieldFormLabel,
+      fontSize: '17px',
       textTransform: 'capitalize',
       '&.MuiInputLabel-shrink': {
         transform: 'translate(0px, -20px) scale(0.75)',

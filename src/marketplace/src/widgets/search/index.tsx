@@ -8,7 +8,7 @@ export const Search = () => {
 
   return (
     <TextField 
-      variant='filled' 
+      variant='filled'
       label='Find achievement'
       value={input}
       onChange={(e) => {
