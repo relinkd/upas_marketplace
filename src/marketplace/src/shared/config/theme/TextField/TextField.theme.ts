@@ -56,12 +56,13 @@ export const getMuiTextFieldOverrides = (theme: Theme): ComponentsOverrides['Mui
       lineHeight: '32px',
       color: theme.themeColors.textFieldFormLabel,
       fontSize: '17px',
-      textTransform: 'capitalize',
+      paddingLeft: 70,
       '&.MuiInputLabel-shrink': {
-        transform: 'translate(0px, -20px) scale(0.75)',
+        transform: 'none',
       },
       '&.Mui-focused': {
         color: theme.themeColors.textFieldFormLabel,
+        transform: 'none'
       },
     },
     'input:-webkit-autofill': {

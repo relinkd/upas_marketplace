@@ -10,7 +10,8 @@ export const Issuers = () => {
   return (
     <Box paddingTop={12} sx={{
       width: '100%',
-      display: 'flex'
+      display: 'flex',
+      flexDirection: 'column'
     }}>
         {
           issuers.map((issuer) => <Issuer issuer={issuer}/>)
