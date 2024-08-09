@@ -3,6 +3,7 @@ export * from './with-theme';
 export * from './with-store';
 export * from './with-ic-connect';
 export * from './with-persistor';
+export * from './with-achievement';
 
 export const withProviders =
   (...providers: any[]) =>
