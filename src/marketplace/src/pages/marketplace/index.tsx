@@ -1,6 +1,6 @@
-import { Typography, Stack } from '@mui/material';
+import { Typography, Stack, Button } from '@mui/material';
 import { Layout, Search } from 'widgets';
-import { useQueryCall } from '@ic-reactor/react';
+import { useQueryCall, useAuth, useAgent } from '@ic-reactor/react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { marketplaceModel } from 'entities/marketplace';
@@ -11,12 +11,18 @@ export const MarketplacePage = () => {
 
   const dispatch = useDispatch();
 
+  const {login, authenticated, identity} = useAuth();
+
   const { data: issuers, call: refetchIssuers } = useQueryCall({
     functionName: "getIssuersBatch",
     args: [
       [],
       BigInt(10)
     ]
+  })
+
+  const { data: caller, call: reCall } = useQueryCall({
+    functionName: "caller",
   })
 
   useEffect(() => {
@@ -32,6 +38,17 @@ export const MarketplacePage = () => {
   return (
     <Layout>
       <Stack flexDirection="column" alignItems="center" width={1} maxWidth={1}>
+        <Button onClick={() => {
+          login({
+            identityProvider: 'http://c2lt4-zmaaa-aaaaa-qaaiq-cai.localhost:4943/#authorize'
+          })
+        }}>Login</Button>
+        <Button onClick={() => {
+          reCall();
+          console.log(caller)
+          console.log(identity?.getPrincipal(), authenticated);
+        }}>Call</Button>
+        
         <Search />
         <Issuers />
       </Stack>
