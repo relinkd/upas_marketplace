@@ -86,15 +86,17 @@ pub async fn get_principal_achievements(principal: Principal) -> Result<Vec<(Pri
 }
 
 #[update(name = "getPrincipalAchievementsMetadata")] 
-pub async fn get_principal_achievements_with_metadata(principal: Principal) -> Result<Vec<(Principal, Vec<Option<Icrc7TokenMetadata>>)>, String> {
+pub async fn get_principal_achievements_with_metadata(principal: Principal) -> Result<Vec<(Principal, Vec<Icrc7TokenMetadata>)>, String> {
     let tokens = get_principal_achievements(principal).await.unwrap();
-    let mut collections_to_tokens_with_metadata: Vec<(Principal, Vec<Option<Icrc7TokenMetadata>>)> = vec![];
+    let mut collections_to_tokens_with_metadata: Vec<(Principal, Vec<Icrc7TokenMetadata>)> = vec![];
 
     for (key, value) in tokens {
         let metadata: (Vec<Option<Icrc7TokenMetadata>>, ) = ic_cdk::call(key, "icrc7_token_metadata", (value,)).await.unwrap();
 
-        if(metadata.0.len() > 0) {
-            collections_to_tokens_with_metadata.push((key, metadata.0))
+        let metadata_some: Vec<Icrc7TokenMetadata> = metadata.0.into_iter().filter_map(|x| x).collect();
+
+        if(metadata_some.len() > 0) {
+            collections_to_tokens_with_metadata.push((key, metadata_some))
         }
     }
     
