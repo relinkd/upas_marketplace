@@ -5,7 +5,9 @@ pub mod access;
 pub mod state;
 pub mod storable;
 pub mod logic;
+pub mod types;
 
 use storable::*;
+use types::*;
 
 export_candid!();
