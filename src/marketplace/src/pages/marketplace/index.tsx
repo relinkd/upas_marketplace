@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { marketplaceModel } from 'entities/marketplace';
 import { IssuerTuple } from 'shared';
 import { Issuers } from 'widgets/issuers';
-import { useAchievementMethod } from 'app/providers';
 
 export const MarketplacePage = () => {
 
@@ -20,14 +19,6 @@ export const MarketplacePage = () => {
       [],
       BigInt(10)
     ]
-  })
-
-  const { data: caller, call: reCall } = useQueryCall({
-    functionName: "caller",
-  })
-
-  const { data: callerA, call: reCallA } = useAchievementMethod({
-    functionName: "caller",
   })
 
   useEffect(() => {
@@ -48,14 +39,6 @@ export const MarketplacePage = () => {
             identityProvider: 'http://c2lt4-zmaaa-aaaaa-qaaiq-cai.localhost:4943/#authorize'
           })
         }}>Login</Button>
-        <Button onClick={() => {
-          reCall();
-          reCallA();
-          console.log(caller, 'indexer');
-          console.log(callerA, 'achivement');
-          console.log(identity?.getPrincipal(), authenticated);
-        }}>Call</Button>
-        
         <Search />
         <Issuers />
       </Stack>
