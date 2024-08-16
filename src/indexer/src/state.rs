@@ -64,3 +64,12 @@ pub fn _set_issuer(principal: Principal, issuer: Issuer) -> Result<(), String> {
     PRINCIPAL_TO_ISSUER.with(|p| p.borrow_mut().insert(StorablePrincipal(principal), issuer));
     Ok(())
 }
+
+#[update(name = "removeIssuer")]
+pub fn remove_issuer(principal: Principal) -> Result<(), String> {
+    if(!is_controller()) {
+        return Err(String::from("Access denied"));
+    }
+    PRINCIPAL_TO_ISSUER.with(|p| p.borrow_mut().remove(&StorablePrincipal(principal)));
+    Ok(())
+}

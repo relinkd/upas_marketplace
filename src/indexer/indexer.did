@@ -23,5 +23,6 @@ service : {
   getPrincipalAchievements : (principal) -> (Result_1);
   getPrincipalAchievementsMetadata : (principal) -> (Result_2);
   isController : () -> (bool) query;
+  removeIssuer : (principal) -> (Result_3);
   verifyIssuer : (principal, text, record { text; text; text }) -> (Result_3);
 }
