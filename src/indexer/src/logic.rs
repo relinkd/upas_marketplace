@@ -77,17 +77,28 @@ pub async fn get_principal_achievements(principal: Principal) -> Result<Vec<(Pri
     let mut collections_to_tokens: Vec<(Principal, Vec<u128>)> = vec![];
 
     for (key, value) in issuers {
-        let balance: (Vec<u128>, ) = ic_cdk::call(key, "icrc7_balance_of", (&[Account {
+        let balance: Result<(Vec<u128>, ) , _>= ic_cdk::call(key, "icrc7_balance_of", (&[Account {
             owner: principal,
             subaccount: None
-        }],)).await.unwrap();
+        }],)).await;
 
-        if(balance.0.get(0).unwrap() == &0_u128) {continue};
+        let mut balance_result: Vec<u128>;
+
+        match balance {
+            Ok(ok) => {
+                balance_result = ok.0
+            }
+            Err(_) => {
+                continue;
+            }
+        }
+
+        if(balance_result.get(0).unwrap() == &0_u128) {continue};
 
         let owned: (Vec<u128>, ) = ic_cdk::call(key, "icrc7_tokens_of", (Account {
             owner: principal,
             subaccount: None
-        }, None::<u128>, balance.0.get(0).unwrap() - 1,)).await.unwrap();
+        }, None::<u128>, balance_result.get(0).unwrap() - 1,)).await.unwrap();
 
         collections_to_tokens.push((key, owned.0))
     }
