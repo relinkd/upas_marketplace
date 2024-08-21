@@ -12,14 +12,24 @@ use crate::types::Icrc7TokenMetadata;
 
 
 #[update(name = "addUnverifiedIssuer")]
-pub fn add_unverified_issuer(principal: Principal) -> Result<Issuer, String> {
+pub async fn add_unverified_issuer(principal: Principal) -> Result<Issuer, String> {
     let is_issuer = get_issuer(principal);
+
+    if(!is_controller()) {
+        return Err(String::from("Access denied"));
+    }
 
     match is_issuer {
         Ok(_) => return Err(String::from("Issuer already exist")),
         Err(_) => {
+
+            let minter: (Principal, ) = ic_cdk::call(principal, "getMinter", (&[Account {
+                owner: principal,
+                subaccount: None
+            }],)).await.unwrap();
+            
             let issuer = Issuer {
-                reputation_module: String::from("null"),
+                reputation_module: minter.0.to_string(),
                 issuer_type: String::from("null"),
                 verified: false,
                 name: String::from("null"),

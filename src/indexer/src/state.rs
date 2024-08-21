@@ -10,6 +10,7 @@ use crate::storable::{
     Issuer,
     Memory
 };
+use crate::access::is_controller;
 
 thread_local! {
     static MEMORY_MANAGER: RefCell<MemoryManager<DefaultMemoryImpl>> =

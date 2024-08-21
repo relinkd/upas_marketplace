@@ -1,2 +1,2 @@
-dfx canister call indexer addUnverifiedIssuer '(principal "dmalx-m4aaa-aaaaa-qaanq-cai")'
-dfx canister call indexer  verifyIssuer '(principal "dmalx-m4aaa-aaaaa-qaanq-cai", "icrc-7", record {"reputation module id"; "{r}elinkd issuer"; "Test {r}elinkd UPAS issuer"})'
+dfx canister call indexer addUnverifiedIssuer '(principal "gq3rs-huaaa-aaaaa-qaasa-cai")'
+dfx canister call indexer  verifyIssuer '(principal "dmalx-m4aaa-aaaaa-qaanq-cai", "icrc-7", record {"gc5gl-leaaa-aaaaa-qaara-cai"; "{r}elinkd issuer"; "Test {r}elinkd UPAS issuer"})'
