@@ -7,8 +7,8 @@ The indexer canister is responsible for indexing and managing data within the sy
 - `access`: Provides access control functions for checking if the caller is authorized and for retrieving the caller's principal ID.
 - `storage`: Manages the storage of indexed data, including functions for adding, updating, and retrieving data.
 - `indexing`: Contains the logic for indexing data, including functions for creating and managing indexes.
-- `query`: Provides functions for querying indexed data, including search and retrieval operations.
 - `utils`: Contains utility functions used across the indexer canister.
+- `state`: Manages the state of the indexer canister, including functions for saving and restoring state.
 
 ## Access Module
 
@@ -24,8 +24,8 @@ The `indexing` module contains the core logic for indexing data. It includes fun
 
 ## Query Module
 
-The `query` module provides functions for querying indexed data. It includes search functions to retrieve data based on various criteria and retrieval functions to get specific data entries.
-
-## Utils Module
-
 The `utils` module contains utility functions that are used across the indexer canister. These functions support various operations such as data formatting, validation, and other common tasks.
+
+## State Module
+
+The `state` module manages the state of the indexer canister. It includes functions to save the current state and restore it when needed.
