@@ -1,3 +1,5 @@
+//! This module provides functions to manage the state of the indexer canister.
+
 use candid::Principal;
 use ic_stable_structures::{
     DefaultMemoryImpl, StableBTreeMap, StableVec, StableCell
@@ -23,6 +25,16 @@ thread_local! {
     );
 }
 
+/// Retrieves the issuer associated with the given principal.
+///
+/// # Arguments
+///
+/// * `principal` - The principal for which to retrieve the issuer.
+///
+/// # Returns
+///
+/// * `Ok(Issuer)` if the issuer is found.
+/// * `Err(String)` if the issuer is not found.
 #[query(name = "getIssuer")]
 pub fn get_issuer(principal: Principal) -> Result<Issuer, String> {
     if let Some(issuer) = PRINCIPAL_TO_ISSUER.with(|p| p.borrow().get(&StorablePrincipal(principal))) {
@@ -31,6 +43,17 @@ pub fn get_issuer(principal: Principal) -> Result<Issuer, String> {
         Err(String::from("Issuer not found"))
     }
 }
+
+/// Retrieves a batch of issuers starting from the given principal.
+///
+/// # Arguments
+///
+/// * `start_principal` - The principal from which to start the batch retrieval.
+/// * `limit` - The maximum number of issuers to retrieve.
+///
+/// # Returns
+///
+/// * A vector of tuples containing the principal and issuer.
 #[query(name = "getIssuersBatch")]
 pub fn get_issuers_batch(start_principal: Option<Principal>, limit: usize) -> Vec<(Principal, Issuer)> {
     PRINCIPAL_TO_ISSUER.with(|p| {
@@ -60,12 +83,32 @@ pub fn get_issuers_batch(start_principal: Option<Principal>, limit: usize) -> Ve
     })
 }
 
-
+/// Sets the issuer for the given principal.
+///
+/// # Arguments
+///
+/// * `principal` - The principal for which to set the issuer.
+/// * `issuer` - The issuer to associate with the principal.
+///
+/// # Returns
+///
+/// * `Ok(())` if the issuer is set successfully.
+/// * `Err(String)` if there is an error.
 pub fn _set_issuer(principal: Principal, issuer: Issuer) -> Result<(), String> {
     PRINCIPAL_TO_ISSUER.with(|p| p.borrow_mut().insert(StorablePrincipal(principal), issuer));
     Ok(())
 }
 
+/// Removes the issuer associated with the given principal.
+///
+/// # Arguments
+///
+/// * `principal` - The principal for which to remove the issuer.
+///
+/// # Returns
+///
+/// * `Ok(())` if the issuer is removed successfully.
+/// * `Err(String)` if there is an error or access is denied.
 #[update(name = "removeIssuer")]
 pub fn remove_issuer(principal: Principal) -> Result<(), String> {
     if(!is_controller()) {

@@ -1,3 +1,5 @@
+//! This module implements the Storable trait for various types used in the indexer canister.
+
 use candid::{Principal, CandidType, Deserialize, Encode, Decode};
 use ic_stable_structures::memory_manager::VirtualMemory;
 use ic_stable_structures::{

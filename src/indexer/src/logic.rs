@@ -1,3 +1,5 @@
+//! This module represents all logic to work with indexer canister
+
 use candid::Principal;
 use ic_cdk::{query, update};
 use crate::storable::Issuer;
@@ -11,6 +13,17 @@ use crate::state::{
 use crate::types::Icrc7TokenMetadata;
 
 
+/// Adds an unverified issuer to the system.
+///
+/// # Arguments
+/// * `principal` - The principal ID of the issuer to be added.
+///
+/// # Returns
+/// * `Result<Issuer, String>` - Returns the newly created `Issuer` if successful, or an error message if failed.
+///
+/// # Errors
+/// * Returns an error if the caller is not a controller.
+/// * Returns an error if the issuer already exists.
 #[update(name = "addUnverifiedIssuer")]
 pub async fn add_unverified_issuer(principal: Principal) -> Result<Issuer, String> {
     let is_issuer = get_issuer(principal);
@@ -44,6 +57,19 @@ pub async fn add_unverified_issuer(principal: Principal) -> Result<Issuer, Strin
    
 }
 
+/// Verifies an existing issuer and updates their information.
+///
+/// # Arguments
+/// * `principal` - The principal ID of the issuer to be verified.
+/// * `issuer_type` - The type of the issuer.
+/// * `metadata` - A tuple containing (reputation_module, name, description) of the issuer.
+///
+/// # Returns
+/// * `Result<(), String>` - Returns `Ok(())` if successful, or an error message if failed.
+///
+/// # Errors
+/// * Returns an error if the caller is not a controller.
+/// * Returns an error if the issuer is not found.
 #[update(name = "verifyIssuer")]
 pub fn verify_issuer(principal: Principal, issuer_type: String, metadata: (String, String, String)) -> Result<(), String> {
     let issuer = get_issuer(principal);
@@ -71,6 +97,16 @@ pub fn verify_issuer(principal: Principal, issuer_type: String, metadata: (Strin
    
 }
 
+/// Retrieves the achievements (token IDs) for a given principal across all issuers.
+///
+/// # Arguments
+/// * `principal` - The principal ID to fetch achievements for.
+///
+/// # Returns
+/// * `Result<Vec<(Principal, Vec<u128>)>, String>` - Returns a vector of tuples containing the issuer's principal and a vector of token IDs owned by the given principal.
+///
+/// # Errors
+/// * Returns an error if there's an issue communicating with any of the issuers.
 #[update(name = "getPrincipalAchievements")] 
 pub async fn get_principal_achievements(principal: Principal) -> Result<Vec<(Principal, Vec<u128>)>, String> {
     let issuers = get_issuers_batch(None, 10);
@@ -106,6 +142,16 @@ pub async fn get_principal_achievements(principal: Principal) -> Result<Vec<(Pri
     Ok(collections_to_tokens)
 }
 
+/// Retrieves the achievements with metadata for a given principal across all issuers.
+///
+/// # Arguments
+/// * `principal` - The principal ID to fetch achievements for.
+///
+/// # Returns
+/// * `Result<Vec<(Principal, Vec<Icrc7TokenMetadata>)>, String>` - Returns a vector of tuples containing the issuer's principal and a vector of token metadata owned by the given principal.
+///
+/// # Errors
+/// * Returns an error if there's an issue communicating with any of the issuers or fetching metadata.
 #[update(name = "getPrincipalAchievementsMetadata")] 
 pub async fn get_principal_achievements_with_metadata(principal: Principal) -> Result<Vec<(Principal, Vec<Icrc7TokenMetadata>)>, String> {
     let tokens = get_principal_achievements(principal).await.unwrap();
