@@ -22,7 +22,7 @@ The `storage` module manages the storage of indexed data. It includes functions 
 
 The `indexing` module contains the core logic for indexing data. It includes functions to create new indexes, update existing indexes, and manage the indexing process.
 
-## Query Module
+## Utils Module
 
 The `utils` module contains utility functions that are used across the indexer canister. These functions support various operations such as data formatting, validation, and other common tasks.
 
