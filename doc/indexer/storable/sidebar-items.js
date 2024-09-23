@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_KEY_SIZE","MAX_VALUE_SIZE"],"struct":["Issuer","StorablePrincipal"],"type":["Memory"]};
