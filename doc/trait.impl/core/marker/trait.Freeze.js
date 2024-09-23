@@ -1,0 +1,3 @@
+(function() {var implementors = {
+"indexer":[["impl Freeze for <a class=\"struct\" href=\"indexer/storable/struct.StorablePrincipal.html\" title=\"struct indexer::storable::StorablePrincipal\">StorablePrincipal</a>",1,["indexer::storable::StorablePrincipal"]],["impl Freeze for <a class=\"struct\" href=\"indexer/storable/struct.Issuer.html\" title=\"struct indexer::storable::Issuer\">Issuer</a>",1,["indexer::storable::Issuer"]]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

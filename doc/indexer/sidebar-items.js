@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["get_candid_pointer"],"mod":["access","logic","state","storable","types"]};
