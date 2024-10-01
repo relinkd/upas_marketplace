@@ -97,9 +97,10 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build",
-    "prebuild": "dfx generate",
+    "build": "vite build --mode production",
+    "prebuild": "",
     "test": "craco test",
+    "preview": "vite preview",
     "eject": "react-scripts eject",
     "format": "prettier --write \"{src,types,scripts}/**/*.{json,{j,t}s{,x},scss,}\"",
     "lint": "npm run lint:ts",
