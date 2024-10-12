@@ -27,8 +27,8 @@ export const Footer = () => {
         borderColor: COLOR_BORDER_PURPLE,
         marginBottom: 2
     }}>
-      <FooterLink href="#">Github</FooterLink>
-      <FooterLink href="#">DOCs</FooterLink>
+      <FooterLink href="https://github.com/relinkd/UPAS">Github</FooterLink>
+      <FooterLink href="https://relinkd.gitbook.io/upas">DOCs</FooterLink>
     </Stack>
   )
 };
